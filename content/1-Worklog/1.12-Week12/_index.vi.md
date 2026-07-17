@@ -3,51 +3,27 @@ title: "Worklog Tuần 12"
 date: 2024-01-01
 weight: 2
 chapter: false
-pre: " <b> 1.12 </b> "
+pre: " <b> 1.12. </b> "
 ---
 
 ### Mục tiêu tuần 12:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Rà soát lại toàn bộ kiến trúc Maison Édition đã xây trong 11 tuần qua.
+* Phân tích và tối ưu chi phí, thực hành tháo dỡ hạ tầng an toàn.
+* Tổng kết lại toàn bộ những gì đã học được trong đợt thực tập.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tìm hiểu các khái niệm tối ưu chi phí AWS: Reserved Instances, Savings Plans, right-sizing | 06/07/2026 | 06/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 3-4 | - Rà soát lại toàn bộ kiến trúc đã làm (VPC → EC2/ASG → RDS → S3/CloudFront → Redis → SQS/Lambda → DynamoDB → CloudWatch/SNS → WAF) và liệt kê từng khoản chi phí | 07/07/2026 | 08/07/2026 | [/5-Workshop/5.9-Cost-Cleanup/](/5-Workshop/5.9-Cost-Cleanup/) |
+| 5 | - **Áp dụng vào project:** phân tích bảng chi phí thật của Maison Édition (NAT Gateway là khoản lớn nhất), đề xuất phương án tối ưu (giảm số NAT Gateway, cân nhắc tắt Multi-AZ/WAF khi không cần) | 09/07/2026 | 09/07/2026 | [/2-Proposal/](/2-Proposal/) · [/5-Workshop/5.9-Cost-Cleanup/](/5-Workshop/5.9-Cost-Cleanup/) |
+| 6-8 | - **Áp dụng vào project:** thực hành gỡ hạ tầng đúng thứ tự (backend trước, frontend sau) và dọn các resource dễ bị bỏ sót (image trong ECR, CloudWatch Logs cũ, các version object cũ trong S3) | 10/07/2026 | 12/07/2026 | [/5-Workshop/5.9-Cost-Cleanup/](/5-Workshop/5.9-Cost-Cleanup/) |
 
 ### Kết quả đạt được tuần 12:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+* Nhìn lại được toàn cảnh 1 hệ thống multi-tier hoàn chỉnh trên AWS — từ networking, compute, database, cache, đến xử lý bất đồng bộ, NoSQL, giám sát và bảo mật lớp ngoài — và hiểu được cách các phần ghép vào nhau.
+* Học được cách đọc 1 bảng chi phí AWS và nhận ra đâu là khoản lớn nhất, dễ bị bỏ qua nhất (NAT Gateway).
+* Hiểu rằng tối ưu chi phí luôn đi kèm đánh đổi (Multi-AZ đổi lấy uptime, WAF đổi lấy bảo mật, số NAT Gateway đổi lấy khả năng chịu lỗi AZ) — không có lựa chọn nào hoàn toàn miễn phí.
+* Học được thứ tự tháo dỡ hạ tầng an toàn và những resource "ẩn" hay bị quên khi dọn dẹp (image trong ECR, log group cũ, version cũ của object trong S3).
+* Tổng kết: từ chỗ chưa biết AWS là gì (tuần 1) đến việc tự tay dựng và vận hành một hệ thống production thật cho project Maison Édition (tuần 12).

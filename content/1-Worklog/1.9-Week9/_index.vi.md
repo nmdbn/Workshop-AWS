@@ -8,46 +8,22 @@ pre: " <b> 1.9. </b> "
 
 ### Mục tiêu tuần 9:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Học messaging bất đồng bộ với SQS và compute theo sự kiện với Lambda.
+* Áp dụng trực tiếp vào project Maison Édition: xây luồng xử lý đơn hàng thật.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tìm hiểu khái niệm SQS: standard queue so với FIFO queue, visibility timeout, Dead Letter Queue, `maxReceiveCount` | 15/06/2026 | 15/06/2026 | <https://000077.awsstudygroup.com> |
+| 3 | - Tìm hiểu AWS Lambda cơ bản: trigger, event source mapping, IAM role riêng cho Lambda, batch size | 16/06/2026 | 16/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Tìm hiểu Amazon SES: chế độ sandbox, phải verify cả email người gửi lẫn người nhận mới gửi được | 17/06/2026 | 17/06/2026 | <https://000077.awsstudygroup.com> |
+| 5 | - **Áp dụng vào project:** triển khai SQS queue + DLQ cho luồng đặt hàng của Maison Édition | 18/06/2026 | 18/06/2026 | <https://000077.awsstudygroup.com> · [/5-Workshop/5.5-SQS-Lambda-Order/](/5-Workshop/5.5-SQS-Lambda-Order/) |
+| 6 | - **Áp dụng vào project:** viết Lambda `order-processor` (Node.js), gửi email xác nhận qua SES, publish message từ Spring Boot ngay sau khi lưu đơn vào RDS (best-effort, không chặn phản hồi) | 19/06/2026 | 19/06/2026 | [/5-Workshop/5.5-SQS-Lambda-Order/](/5-Workshop/5.5-SQS-Lambda-Order/) |
 
 ### Kết quả đạt được tuần 9:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+* Hiểu vì sao tách việc gửi email ra khỏi luồng chính (qua SQS + Lambda) giúp khách hàng nhận phản hồi checkout nhanh hơn, không phải chờ SES.
+* Hiểu Dead Letter Queue kết hợp `maxReceiveCount` giúp cô lập message cứ lỗi lặp lại, thay vì retry vô hạn lần.
+* Phân biệt được publish "best-effort" (không throw lỗi nếu SQS down, chỉ log warning) với việc publish bắt buộc phải thành công mới coi là hoàn tất đơn hàng.
+* Học được cách debug SES ở chế độ sandbox — hiểu vì sao phải verify cả người gửi lẫn người nhận khi còn ở sandbox.
+* Áp dụng thành công vào project thật: đặt 1 đơn hàng và nhận được email xác nhận chỉ trong vài chục giây.

@@ -8,46 +8,22 @@ pre: " <b> 1.11. </b> "
 
 ### Mục tiêu tuần 11:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Học giám sát/cảnh báo tập trung với CloudWatch + SNS và bảo vệ lớp ngoài với WAF.
+* Áp dụng cả hai trực tiếp để tăng cường bảo mật/giám sát cho hệ thống Maison Édition đang chạy.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tìm hiểu CloudWatch: Metrics, Logs, Alarms, Dashboards | 29/06/2026 | 29/06/2026 | <https://000008.awsstudygroup.com> |
+| 3 | - Tìm hiểu SNS pub/sub và quy trình xác nhận subscription qua email | 30/06/2026 | 30/06/2026 | <https://000077.awsstudygroup.com> |
+| 4-5 | - Tìm hiểu WAF: managed rule group, custom rule, rate-based rule; Web ACL cho CloudFront bắt buộc khai báo ở `us-east-1` | 01/07/2026 | 02/07/2026 | <https://000026.awsstudygroup.com> |
+| 6 | - **Áp dụng vào project:** cấu hình 4 CloudWatch alarm (CPU của ASG, ALB 5xx, RDS connections, SQS DLQ) gửi cảnh báo qua SNS email; bật WAF cho CloudFront với 3 managed rule group + 1 rate-based rule; test bằng cách bơm message giả vào DLQ và gửi request SQLi/XSS giả để xác nhận bị chặn | 03/07/2026 | 03/07/2026 | <https://000026.awsstudygroup.com> · [/5-Workshop/5.7-CloudWatch-SNS/](/5-Workshop/5.7-CloudWatch-SNS/) · [/5-Workshop/5.8-WAF/](/5-Workshop/5.8-WAF/) |
+| 7 | - Tham gia **buổi Event 4 — FCAJ Community Day** | 04/07/2026 | 04/07/2026 | [/4-EventParticipated/4.4-Event4/](/4-EventParticipated/4.4-Event4/) |
 
 ### Kết quả đạt được tuần 11:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+* Hiểu sự khác nhau giữa CloudWatch Metrics (số liệu), Logs (log chi tiết), và Alarms (ngưỡng cảnh báo) — 3 mảnh riêng nhưng bổ trợ nhau.
+* Hiểu vì sao Web ACL cho CloudFront bắt buộc khai báo ở `us-east-1` dù CloudFront là dịch vụ global.
+* Học được cách test alarm an toàn (bơm message giả vào DLQ) thay vì phải chờ sự cố thật xảy ra.
+* Hiểu rate-based rule của WAF hoạt động theo cửa sổ trượt 5 phút, khác với việc chặn cố định theo IP.
+* Áp dụng thành công: nhận được email cảnh báo thật sau khi cố tình kích hoạt alarm, và xác nhận request SQLi/XSS giả bị WAF chặn trả về `403`.

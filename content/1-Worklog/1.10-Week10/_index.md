@@ -8,45 +8,22 @@ pre: " <b> 1.10. </b> "
 
 ### Week 10 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+- Learn NoSQL fundamentals with DynamoDB.
+- Apply it directly to the Maison Édition project: build an activity-log / audit-trail feature.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+
+| Day | Task                                                                                                                                                                                                         | Start Date | Completion Date | Reference Material                                                                                                    |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | --------------------------------------------------------------------------------------------------------------------- |
+| 2   | - Learn DynamoDB core concepts: partition key, sort key, billing mode (on-demand vs provisioned), TTL <br> - Attend study at Office                                                                          | 06/22/2026 | 06/22/2026      | <https://000060.awsstudygroup.com>                                                                                    |
+| 3-4 | - Learn Global Secondary Index — when it's needed and how it differs from the primary key                                                                                                                    | 06/23/2026 | 06/24/2026      | <https://000060.awsstudygroup.com>                                                                                    |
+| 5   | - **Apply to the project:** create the `activity-log` table for Maison Édition (hash `userId`, range `timestamp`), enable TTL to auto-delete after 90 days                                                   | 06/25/2026 | 06/25/2026      | <https://000060.awsstudygroup.com> · [/5-Workshop/5.6-DynamoDB-Activity-Log/](/5-Workshop/5.6-DynamoDB-Activity-Log/) |
+| 6   | - **Apply to the project:** write async (`@Async`) logging from Spring Boot when a user views a product/searches, and from Lambda when an order is created; build the admin endpoint to look up a user's log | 06/26/2026 | 06/26/2026      | [/5-Workshop/5.6-DynamoDB-Activity-Log/](/5-Workshop/5.6-DynamoDB-Activity-Log/)                                      |
+| 7   | - Attended **Event 3 — FCAJ Community Day** (joined online)                                                                                                                                                   | 06/27/2026 | 06/27/2026      | [/4-EventParticipated/4.3-Event3/](/4-EventParticipated/4.3-Event3/)                                                  |
 
 ### Week 10 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Understood how a partition key plus a sort key decide how data is partitioned and queried efficiently (query by exact `userId` plus a time range).
+- Understood that DynamoDB's TTL automatically cleans up old data without writing a separate cleanup job.
+- Learned to write "best-effort, asynchronous" logging — if DynamoDB has a hiccup, the customer's core action (viewing a product, searching) is completely unaffected.
+- Applied it successfully to the project: confirmed on the Console that the correct `VIEW_PRODUCT`/`SEARCH` records (from the backend) and `ORDER_CREATED` record (from Lambda) all appear for the same user.

@@ -8,46 +8,24 @@ pre: " <b> 1.1. </b> "
 
 ### Mục tiêu tuần 1:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Hòa nhập với team First Cloud AI Journey, nắm rõ nội quy và kỳ vọng trong đợt thực tập.
+- Hình dung được AWS thực chất là gì trước khi đi sâu vào từng dịch vụ cụ thể.
+- Có 1 tài khoản AWS dùng được, CLI đã cấu hình xong, và những bước tay đầu tiên với EC2.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+
+| Thứ | Công việc                                                                                                                                                                       | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
+| 2   | - Onboarding: tham gia hội thảo tại trường, gặp gỡ team FCAJ, đọc kỹ nội quy và những gì đơn vị thực tập kỳ vọng                                                                | 20/04/2026   | 20/04/2026      |                                           |
+| 3   | - Khảo sát các nhóm dịch vụ chính của AWS (Compute, Storage, Networking, Database, ...) và hình dung chúng khớp vào đâu trong 1 hệ thống web điển hình                          | 21/04/2026   | 21/04/2026      | <https://cloudjourney.awsstudygroup.com/> |
+| 4   | - Đăng ký tài khoản AWS Free Tier <br> - Cài đặt và cấu hình AWS CLI (Access Key, Secret Key, region mặc định)                                                                  | 22/04/2026   | 22/04/2026      | <https://cloudjourney.awsstudygroup.com/> |
+| 5-6 | - Tìm hiểu nền tảng EC2: instance type, AMI, EBS, Elastic IP, và cách kết nối SSH truyền thống <br> - **Thực hành:** tạo 1 EC2 instance, kết nối qua SSH, gắn thêm 1 EBS volume | 23/04/2026   | 24/04/2026      | <https://cloudjourney.awsstudygroup.com/> |
 
 ### Kết quả đạt được tuần 1:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+- Hình dung được AWS như 1 tập hợp các khối xây dựng (Compute, Storage, Networking, Database, ...) chứ không phải 1 sản phẩm duy nhất — cách nhìn này giúp các tuần sau dễ định vị hơn.
+- Có 1 tài khoản AWS Free Tier hoạt động được, sẵn sàng dùng cho suốt đợt thực tập.
+- Tự tin thao tác trên AWS Console để tìm và mở đúng dịch vụ cần dùng, dù chưa hiểu sâu bên trong nó làm gì.
+- Cấu hình xong AWS CLI trọn vẹn (Access Key / Secret Key / region mặc định) và dùng nó để kiểm tra vài thứ cơ bản: định danh tài khoản, danh sách region, trạng thái EC2, quản lý key pair.
+- Biết cách qua lại giữa Console và CLI để soi cùng 1 resource từ 2 góc nhìn khác nhau — thói quen này về sau hóa ra rất hữu ích lúc debug.
+- Tự tay dựng được 1 EC2 instance đầu tiên và kết nối qua SSH — trải nghiệm nền tảng mà các tuần sau sẽ chủ động rời bỏ (chuyển sang Session Manager thay vì SSH key).

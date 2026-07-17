@@ -8,46 +8,21 @@ pre: " <b> 1.8. </b> "
 
 ### Mục tiêu tuần 8:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Học caching trong bộ nhớ với ElastiCache Redis.
+* Tích hợp cache ở tầng ứng dụng để giảm tải đọc cho database.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tìm hiểu khái niệm ElastiCache Redis: cluster, node type, cluster mode so với non-cluster mode | 08/06/2026 | 08/06/2026 | <https://000061.awsstudygroup.com> |
+| 3 | - Tìm hiểu TTL của cache và chiến lược eviction | 09/06/2026 | 09/06/2026 | <https://000061.awsstudygroup.com> |
+| 4 | - **Thực hành:** tạo cluster Redis (1 node, non-cluster mode) trong private subnet, Security Group chỉ mở port 6379 cho Security Group của EC2 | 10/06/2026 | 10/06/2026 | <https://000061.awsstudygroup.com> |
+| 5 | - **Thực hành:** thêm `@Cacheable` vào Spring Boot cho product detail (TTL ngắn vì có tồn kho) và categories/brands (TTL dài hơn); test bằng `redis-cli` qua Session Manager | 11/06/2026 | 11/06/2026 | <https://000061.awsstudygroup.com> |
 
 ### Kết quả đạt được tuần 8:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+* Hiểu cơ chế cache-aside: đọc cache trước, miss thì đọc DB rồi ghi lại vào cache — giảm tải đọc cho RDS với dữ liệu ít thay đổi.
+* Hiểu vì sao các loại dữ liệu khác nhau nên dùng TTL khác nhau — dữ liệu đổi nhanh (tồn kho) cần TTL ngắn, dữ liệu ít đổi (category/brand) dùng TTL dài hơn.
+* Học được cách giữ app sống khi Redis bị down — cơ chế fallback đọc thẳng từ DB thay vì throw exception.
+* Thực hành test Redis từ 1 EC2 riêng nằm trong private subnet, dùng Session Manager kết hợp `docker run redis-cli` — không bao giờ cần mở Redis ra internet.
+* Hiểu sự khác nhau giữa cluster mode (nhiều shard, scale ngang) và non-cluster mode (1 node chính duy nhất, đơn giản hơn, đủ dùng cho traffic nhỏ).

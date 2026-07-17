@@ -8,45 +8,22 @@ pre: " <b> 1.9. </b> "
 
 ### Week 9 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Learn asynchronous messaging with SQS and event-driven compute with Lambda.
+* Apply it directly to the Maison Édition project: build the real order-processing flow.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 2 | - Learn SQS concepts: standard vs FIFO queue, visibility timeout, Dead Letter Queue, `maxReceiveCount` | 06/15/2026 | 06/15/2026 | <https://000077.awsstudygroup.com> |
+| 3 | - Learn AWS Lambda basics: triggers, event source mapping, a dedicated IAM role for Lambda, batch size | 06/16/2026 | 06/16/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| 4 | - Learn Amazon SES: sandbox mode, verifying sender/recipient email before sending is allowed | 06/17/2026 | 06/17/2026 | <https://000077.awsstudygroup.com> |
+| 5 | - **Apply to the project:** implement the SQS queue + DLQ for Maison Édition's checkout flow | 06/18/2026 | 06/18/2026 | <https://000077.awsstudygroup.com> · [/5-Workshop/5.5-SQS-Lambda-Order/](/5-Workshop/5.5-SQS-Lambda-Order/) |
+| 6 | - **Apply to the project:** write the Node.js `order-processor` Lambda, send the confirmation email via SES, publish the message from Spring Boot right after the order is saved to RDS (best-effort, non-blocking) | 06/19/2026 | 06/19/2026 | [/5-Workshop/5.5-SQS-Lambda-Order/](/5-Workshop/5.5-SQS-Lambda-Order/) |
 
 ### Week 9 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Understood why pulling email-sending out of the main request path (via SQS + Lambda) lets the customer get a fast checkout response instead of waiting on SES.
+* Understood how a Dead Letter Queue plus `maxReceiveCount` isolates a message that keeps failing, instead of retrying it forever.
+* Learned to distinguish a "best-effort" publish (doesn't throw if SQS is down, just logs a warning) from a publish that must succeed before an order can be considered complete.
+* Learned to debug SES sandbox mode — understood why both sender and recipient must be verified while still in sandbox.
+* Applied it successfully to the real project: placed an order and received the confirmation email within seconds.

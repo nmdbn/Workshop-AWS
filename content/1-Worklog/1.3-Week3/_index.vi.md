@@ -8,46 +8,22 @@ pre: " <b> 1.3. </b> "
 
 ### Mục tiêu tuần 3:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu nền tảng EC2: AMI, instance type, IAM role so với access key.
+* Học cách truy cập instance an toàn mà không cần SSH, dùng Systems Manager Session Manager.
+* Cài Docker để chuẩn bị chạy ứng dụng dưới dạng container.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tìm hiểu EC2 cơ bản: AMI, instance type, EBS volume, IAM Instance Profile | 04/05/2026 | 04/05/2026 | <https://000004.awsstudygroup.com> |
+| 3 | - Tìm hiểu IAM Role so với Access Key khi cấp quyền cho ứng dụng truy cập dịch vụ AWS | 05/05/2026 | 05/05/2026 | <https://000048.awsstudygroup.com> |
+| 4-5 | - Tìm hiểu Systems Manager Session Manager — kết nối vào private instance không cần SSH key, không cần mở port 22 | 06/05/2026 | 07/05/2026 | <https://000058.awsstudygroup.com> |
+| 6 | - **Thực hành:** <br>&emsp; + Tạo EC2 instance gắn IAM Role (không dùng key pair) <br>&emsp; + Kết nối qua Session Manager <br>&emsp; + Cài Docker + Docker Compose | 08/05/2026 | 08/05/2026 | <https://000004.awsstudygroup.com> |
 
 ### Kết quả đạt được tuần 3:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+* Hiểu launch template dùng để chuẩn hóa cấu hình 1 instance (AMI, instance type, IAM profile, user data) để tái sử dụng thay vì tạo tay từng lần.
+* Hiểu vì sao gắn IAM Role cho EC2 an toàn hơn hẳn so với việc gán cứng access key vào server hoặc vào code.
+* Học được cách kết nối vào private instance (không có public IP, không mở port 22) hoàn toàn qua Session Manager.
+* Phân biệt được user data (chỉ chạy 1 lần lúc boot) với việc tự SSH vào rồi cấu hình tay.
+* Cài đặt thành công Docker trên Amazon Linux 2023, hiểu vì sao đóng gói app thành container giúp deploy nhất quán trên nhiều instance.

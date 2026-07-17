@@ -8,46 +8,23 @@ pre: " <b> 1.5. </b> "
 
 ### Mục tiêu tuần 5:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Học cách host static site trên S3 và tăng tốc/bảo vệ bằng CloudFront.
+* Hiểu bucket private phục vụ qua Origin Access Control (OAC) thay vì bucket public.
+* Tìm hiểu S3 Gateway VPC Endpoint để truy cập private từ EC2.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tìm hiểu S3 static website hosting cơ bản, Block Public Access | 18/05/2026 | 18/05/2026 | <https://000057.awsstudygroup.com> |
+| 3 | - Tìm hiểu CloudFront cơ bản: origin, cache behavior, OAC so với bucket public | 19/05/2026 | 19/05/2026 | <https://000094.awsstudygroup.com> |
+| 4 | - Tìm hiểu S3 Gateway VPC Endpoint — cho EC2 truy cập S3 không cần qua NAT/internet | 20/05/2026 | 20/05/2026 | <https://000111.awsstudygroup.com> |
+| 5-6 | - **Thực hành:** <br>&emsp; + Tạo S3 bucket cho FE build (chặn toàn bộ public access) <br>&emsp; + Gắn CloudFront dùng OAC <br>&emsp; + Thêm bucket riêng cho ảnh sản phẩm với path pattern `/media/*` | 21/05/2026 | 22/05/2026 | <https://000057.awsstudygroup.com> |
+| 7 | - Tham gia **buổi Event 1 — FCAJ Community Day** | 23/05/2026 | 23/05/2026 | [/4-EventParticipated/4.1-Event1/](/4-EventParticipated/4.1-Event1/) |
 
 ### Kết quả đạt được tuần 5:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+* Hiểu vì sao bucket private kết hợp CloudFront OAC an toàn hơn hẳn bucket public — chỉ CloudFront được đọc object, người dùng không bao giờ chạm trực tiếp vào S3.
+* Phân biệt được Gateway VPC Endpoint (miễn phí, chỉ dùng cho S3/DynamoDB) và Interface VPC Endpoint (tính phí, dùng PrivateLink cho các service khác).
+* Hiểu cache behavior của CloudFront cho phép nhiều path pattern (`/media/*`, `/api/*`, `/*`) trỏ về nhiều origin khác nhau trên cùng 1 domain — tránh hoàn toàn lỗi CORS.
+* Học cách chọn cache policy khác nhau cho nội dung tĩnh (CachingOptimized) và API động (CachingDisabled).
+* Hiểu vì sao S3 Gateway Endpoint giúp EC2 upload ảnh lên S3 mà không tốn phí data-transfer của NAT Gateway.

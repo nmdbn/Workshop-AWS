@@ -8,46 +8,20 @@ pre: " <b> 1.2. </b> "
 
 ### Mục tiêu tuần 2:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu nền tảng networking của Amazon VPC: subnet, route table, gateway, security group.
+* Dựng xong nền tảng mạng multi-AZ để toàn bộ hệ thống chạy trên đó.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tìm hiểu khái niệm cơ bản của VPC <br>&emsp; + CIDR block, subnet <br>&emsp; + Route Table <br>&emsp; + Internet Gateway <br>&emsp; + NAT Gateway | 27/04/2026 | 27/04/2026 | <https://000003.awsstudygroup.com> |
+| 3 | - Tìm hiểu Security Group so với Network ACL <br> - Tìm hiểu VPC Resource Map để xem trực quan hạ tầng mạng | 28/04/2026 | 28/04/2026 | <https://000003.awsstudygroup.com> |
+| 4-6 | - **Thực hành:** <br>&emsp; + Tạo 1 VPC trải 2 Availability Zone <br>&emsp; + Tạo 2 public subnet + 2 private subnet <br>&emsp; + Tạo Internet Gateway + NAT Gateway + route table <br>&emsp; + Tạo Security Group <br>&emsp; + Kiểm tra lại toàn bộ bằng Resource Map | 29/04/2026 | 01/05/2026 | <https://000003.awsstudygroup.com> |
 
 ### Kết quả đạt được tuần 2:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+* Hiểu được sự khác nhau giữa public subnet và private subnet, và vì sao EC2/RDS nên đặt ở private subnet.
+* Hiểu route table là thứ quyết định traffic đi đâu — route `0.0.0.0/0` qua Internet Gateway (public) hay qua NAT Gateway (private).
+* Phân biệt được Security Group (stateful, theo từng instance) và Network ACL (stateless, theo từng subnet).
+* Biết cách dùng VPC Resource Map để kiểm tra nhanh toàn bộ subnet/route table/gateway có nối đúng nhau không.
+* Hiểu vì sao NAT Gateway tính phí theo giờ cộng thêm theo GB dù không có traffic — một khoản chi phí cố định cần tính trước.

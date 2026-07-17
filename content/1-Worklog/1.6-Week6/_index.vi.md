@@ -8,45 +8,20 @@ pre: " <b> 1.6. </b> "
 
 ### Mục tiêu tuần 6:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+* Hiểu cách Application Load Balancer phân phối traffic tới nhiều EC2 instance qua target group và health check.
+* Dựng xong baseline compute (launch template + 2 EC2 instance) trước khi thêm auto scaling tuần sau.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | --- | --- | --- | --- |
+| 2 | - Tìm hiểu khái niệm ALB: listener, target group, health check | 25/05/2026 | 25/05/2026 | <https://000006.awsstudygroup.com> |
+| 3-4 | - Tìm hiểu Launch Template — chuẩn hóa cấu hình instance để tái sử dụng cho nhiều instance giống nhau | 26/05/2026 | 27/05/2026 | <https://000006.awsstudygroup.com> |
+| 5-6 | - **Thực hành:** <br>&emsp; + Tạo Launch Template (AMI, instance type, IAM profile, user data) <br>&emsp; + Tạo ALB + Target Group (health check path `/actuator/health`) <br>&emsp; + Gắn tay 2 EC2 instance vào Target Group <br>&emsp; + Test qua tên DNS của ALB | 28/05/2026 | 29/05/2026 | <https://000006.awsstudygroup.com> |
+| 7 | - Tham gia **buổi Event 2 — FCAJ Community Day** | 30/05/2026 | 30/05/2026 | [/4-EventParticipated/4.2-Event2/](/4-EventParticipated/4.2-Event2/) |
 
 ### Kết quả đạt được tuần 6:
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+* Hiểu ALB dùng health check theo chu kỳ để biết instance nào "khỏe" mới nhận traffic — instance lỗi tự động bị loại khỏi vòng quay.
+* Hiểu Launch Template là 1 "khuôn" định nghĩa một lần, dùng lại được cho nhiều instance thay vì tạo tay từng cái.
+* Học được cách chọn health check path/threshold hợp lý cho app Spring Boot (dùng endpoint `/actuator/health`).
+* Nhận ra hạn chế của việc gắn tay instance vào target group (`aws_lb_target_group_attachment`) — mỗi khi số lượng instance đổi phải tự thêm/bớt, không có gì tự động cả. Đây chính là khoảng trống mà Auto Scaling Group sẽ giải quyết ở tuần sau.

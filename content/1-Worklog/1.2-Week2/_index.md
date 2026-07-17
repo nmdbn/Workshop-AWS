@@ -8,45 +8,20 @@ pre: " <b> 1.2. </b> "
 
 ### Week 2 Objectives:
 
-* Connect and get acquainted with members of First Cloud AI Journey.
-* Understand basic AWS services, how to use the console & CLI.
+* Understand Amazon VPC networking fundamentals: subnets, route tables, gateways, security groups.
+* Build the multi-AZ network foundation the rest of the project will run on.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCAJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Day | Task | Start Date | Completion Date | Reference Material |
+| --- | --- | --- | --- | --- |
+| 2 | - Learn VPC core concepts <br>&emsp; + CIDR block, subnet <br>&emsp; + Route Table <br>&emsp; + Internet Gateway <br>&emsp; + NAT Gateway | 04/27/2026 | 04/27/2026 | <https://000003.awsstudygroup.com> |
+| 3 | - Learn Security Group vs Network ACL <br> - Learn VPC Resource Map for visualizing topology | 04/28/2026 | 04/28/2026 | <https://000003.awsstudygroup.com> |
+| 4-6 | - **Practice:** <br>&emsp; + Create 1 VPC across 2 Availability Zones <br>&emsp; + Create 2 public + 2 private subnets <br>&emsp; + Create Internet Gateway + NAT Gateway + route tables <br>&emsp; + Create Security Groups <br>&emsp; + Verify topology using Resource Map | 04/29/2026 | 05/01/2026 | <https://000003.awsstudygroup.com> |
 
 ### Week 2 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Successfully created and configured an AWS Free Tier account.
-
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
-
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
-
-* Used AWS CLI to perform basic operations such as:
-
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
-
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+* Understood the difference between a public subnet and a private subnet, and why EC2/RDS should live in private subnets.
+* Understood that a route table decides where traffic goes — `0.0.0.0/0` through the Internet Gateway (public) or through the NAT Gateway (private).
+* Learned to distinguish Security Groups (stateful, per-instance) from Network ACLs (stateless, per-subnet).
+* Learned to use the VPC Resource Map to quickly verify every subnet, route table, and gateway is wired up correctly.
+* Understood why a NAT Gateway is billed hourly plus per-GB even with no traffic — a fixed cost to budget for.

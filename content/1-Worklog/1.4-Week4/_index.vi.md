@@ -8,46 +8,22 @@ pre: " <b> 1.4. </b> "
 
 ### Mục tiêu tuần 4:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Hiểu nền tảng RDS, đặc biệt là Multi-AZ để tự động failover.
+- Kết nối ứng dụng chạy trên EC2 tới database RDS nằm trong private subnet.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+
+| Thứ | Công việc                                                                                                                                                                                                    | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                     |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------ | --------------- | ---------------------------------- |
+| 2   | - Tìm hiểu khái niệm RDS: engine, storage, Security Group cho DB, DB Subnet Group <br> - Tham gia học tập trên văn phòng                                                                                     | 11/05/2026   | 11/05/2026      | <https://000005.awsstudygroup.com> |
+| 3   | - Tìm hiểu Multi-AZ: standby instance, tự động failover, so với Single-AZ                                                                                                                                    | 12/05/2026   | 12/05/2026      | <https://000005.awsstudygroup.com> |
+| 4   | - Tìm hiểu automated backup, retention period, final snapshot                                                                                                                                                | 13/05/2026   | 13/05/2026      | <https://000005.awsstudygroup.com> |
+| 5-6 | - **Thực hành:** <br>&emsp; + Tạo RDS PostgreSQL trong private subnet, bật Multi-AZ <br>&emsp; + Giới hạn Security Group của DB chỉ cho phép Security Group của EC2 kết nối <br>&emsp; + Test kết nối từ EC2 | 14/05/2026   | 15/05/2026      | <https://000005.awsstudygroup.com> |
 
 ### Kết quả đạt được tuần 4:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+- Hiểu Multi-AZ nghĩa là có 1 bản standby ở AZ khác, tự động failover khi có sự cố — không cần đổi connection string vì cùng 1 endpoint DNS tự trỏ lại.
+- Phân biệt được Multi-AZ (high availability, cùng region) khác với Read Replica (scale đọc, có thể khác region).
+- Hiểu vì sao RDS nên đặt ở private subnet với Security Group chỉ cho phép đúng Security Group của EC2, không bao giờ mở `0.0.0.0/0`.
+- Học được cách cấu hình automated backup với retention period, và final snapshot dùng để làm gì khi xoá instance.
+- Nhận ra Multi-AZ tốn gần gấp đôi chi phí Single-AZ — một đánh đổi trực tiếp giữa uptime và tiền.

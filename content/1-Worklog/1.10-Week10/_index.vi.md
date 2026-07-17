@@ -8,46 +8,22 @@ pre: " <b> 1.10. </b> "
 
 ### Mục tiêu tuần 10:
 
-* Kết nối, làm quen với các thành viên trong First Cloud AI Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Học nền tảng NoSQL với DynamoDB.
+- Áp dụng trực tiếp vào project Maison Édition: xây tính năng activity-log/audit-trail.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCAJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+
+| Thứ | Công việc                                                                                                                                                                                          | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                                                                                                        |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | --------------------------------------------------------------------------------------------------------------------- |
+| 2   | - Tìm hiểu khái niệm cơ bản DynamoDB: partition key, sort key, billing mode (on-demand so với provisioned), TTL <br> - Tham gia học tập trên văn phòng                                             | 22/06/2026   | 22/06/2026      | <https://000060.awsstudygroup.com>                                                                                    |
+| 3-4 | - Tìm hiểu Global Secondary Index — khi nào cần dùng, khác gì so với primary key                                                                                                                   | 23/06/2026   | 24/06/2026      | <https://000060.awsstudygroup.com>                                                                                    |
+| 5   | - **Áp dụng vào project:** tạo bảng `activity-log` cho Maison Édition (hash `userId`, range `timestamp`), bật TTL để tự xoá sau 90 ngày                                                            | 25/06/2026   | 25/06/2026      | <https://000060.awsstudygroup.com> · [/5-Workshop/5.6-DynamoDB-Activity-Log/](/5-Workshop/5.6-DynamoDB-Activity-Log/) |
+| 6   | - **Áp dụng vào project:** viết code ghi log bất đồng bộ (`@Async`) từ Spring Boot khi user xem sản phẩm/tìm kiếm, và từ Lambda khi đơn hàng được tạo; làm endpoint admin để xem lại log theo user | 26/06/2026   | 26/06/2026      | [/5-Workshop/5.6-DynamoDB-Activity-Log/](/5-Workshop/5.6-DynamoDB-Activity-Log/)                                      |
+| 7   | - Tham gia **buổi Event 3 — FCAJ Community Day** (tham dự online)                                                                                                                                  | 27/06/2026   | 27/06/2026      | [/4-EventParticipated/4.3-Event3/](/4-EventParticipated/4.3-Event3/)                                                  |
 
 ### Kết quả đạt được tuần 10:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
-
-* Đã tạo và cấu hình AWS Free Tier account thành công.
-
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
+- Hiểu partition key kết hợp sort key quyết định cách dữ liệu được phân vùng và truy vấn hiệu quả (query đúng theo `userId` cộng khoảng thời gian).
+- Hiểu TTL của DynamoDB giúp tự động dọn dữ liệu cũ mà không cần viết job cleanup riêng.
+- Học được cách ghi log "best-effort, bất đồng bộ" — nếu DynamoDB tạm thời trục trặc, thao tác chính của khách (xem sản phẩm, tìm kiếm) hoàn toàn không bị ảnh hưởng.
+- Áp dụng thành công vào project: xác nhận trên Console thấy đúng record `VIEW_PRODUCT`/`SEARCH` (từ backend) và `ORDER_CREATED` (từ Lambda) cho cùng 1 user.
