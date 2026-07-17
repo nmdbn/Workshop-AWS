@@ -17,7 +17,7 @@ pre: " <b> 4.4. </b> "
 
 ### Speakers List
 * **Nguyen Gia Hung** - Head of Solutions Architect AWS
-* **Vinh Banh (Banh Cam Vinh)** - Renova Cloud
+* **Vinh Banh** - Renova Cloud
 * **Nhu Tran** - Account Manager AWS
 * **Khang Nguyen** - Cloud Kinetics
 

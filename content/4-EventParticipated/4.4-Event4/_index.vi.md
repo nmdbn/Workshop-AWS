@@ -17,7 +17,7 @@ pre: " <b> 4.4. </b> "
 
 ### Danh Sách Diễn Giả
 * **Nguyen Gia Hung** - Heads of Solutions Architect AWS
-* **Vinh Banh (Bành Cẩm Vĩnh)** - Renova Cloud
+* **Vinh Banh** - Renova Cloud
 * **Nhu Tran** - Account Manager AWS
 * **Khang Nguyen** - Cloud Kinetics
 ---
